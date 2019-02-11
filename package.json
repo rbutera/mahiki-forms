@@ -8,18 +8,21 @@
   "license": "PRIVATE",
   "private": true,
   "dependencies": {
+    "addon-redux": "^1.0.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.13.0",
+    "jquery": "^3.3.1",
+    "rambda": "^2.3.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
     "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3",
-    "addon-redux": "^1.0.0",
-    "redux-devtools-extension": "^2.13.8"
+    "webpack-cli": "^3.2.3"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook"
@@ -28,6 +31,7 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/cli": "^4.1.11",
     "@storybook/react": "^4.1.11",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
