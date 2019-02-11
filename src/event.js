@@ -1,5 +1,5 @@
 export function submitEventEnquiry(values) {
-  console.log('table form submitted', values);
+  console.log('event enquiry form submitted', values);
 }
 
 export default submitEventEnquiry;

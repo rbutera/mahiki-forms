@@ -1,5 +1,4 @@
 {
-  "cSpell.words": [
-    "devtools"
-  ]
+  "javascript.validate.enable": false,
+  "cSpell.words": ["devtools"]
 }
