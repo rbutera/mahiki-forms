@@ -30,13 +30,16 @@ export function validateNumPeople(input: number): boolean {
 
 export function validateDate(input: string = '01/01/1980'): boolean {
   // TODO
+  const [DD, MM, YYYY] = split('/')(input);
+
   const today = now();
   if (!input) {
     return false;
   }
-  const parsed = parse(input);
-  console.debug(`checking if ${parsed} is before ${now}`);
-  if (isBefore(parsed, now)) {
+  const parsed = parse(new Date(YYYY, MM, DD));
+
+  console.debug(`checking if ${parsed} is before/after ${today}`);
+  if (isBefore(parsed, today)) {
     console.error(`given date is in the past`);
     return false;
   }
