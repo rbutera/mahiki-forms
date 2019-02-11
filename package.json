@@ -11,11 +11,15 @@
     "css-loader": "^2.1.0",
     "eslint": "^5.13.0",
     "react-dom": "^16.8.1",
+    "react-redux": "^6.0.0",
     "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "addon-redux": "^1.0.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook"
@@ -25,7 +29,6 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@storybook/react": "^4.1.11",
-    "addon-redux": "^1.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "eslint-config-airbnb": "^17.1.0",
@@ -37,7 +40,6 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "prettier": "^1.16.4",
-    "redux-devtools-extension": "^2.13.8",
     "storybook-addon-redux-listener": "^0.1.7"
   }
 }
