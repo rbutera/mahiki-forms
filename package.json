@@ -1,0 +1,28 @@
+{
+  "name": "mahiki-forms",
+  "version": "0.0.1",
+  "description": "Event Enqujiry and Table Booking forms for mahiki.com",
+  "main": "src/index.js",
+  "repository": "https://github.com/Raigasm/mahiki-form",
+  "author": "Rai Butera <rai@rbutera.com>",
+  "license": "PRIVATE",
+  "private": true,
+  "dependencies": {
+    "css-loader": "^2.1.0",
+    "eslint": "^5.13.0",
+    "react-dom": "^16.8.1",
+    "redux": "^4.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/react": "^4.1.11",
+    "babel-loader": "^8.0.5"
+  }
+}
