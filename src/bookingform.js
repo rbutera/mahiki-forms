@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class BookingForm extends Component {
   render() {
-    return <div>Booking Form</div>;
+    return <form>This is a BookingForm</form>;
   }
 }
 
