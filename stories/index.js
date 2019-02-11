@@ -5,6 +5,7 @@ import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import store from '../src/configureStore';
 import { BookingForm } from '../src/bookingform';
+import { submitEventEnquiry } from '../src/event';
 
 const withReduxSettings = {
   Provider,
@@ -15,6 +16,10 @@ const withReduxSettings = {
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-const stories = storiesOf('Demo', module);
+const stories = storiesOf('Booking Form', module);
 stories.addDecorator(withReduxDecorator);
-stories.add('default', () => <BookingForm />);
+
+function BookingFormDemo() {
+  return <BookingForm purpose="Event" onSubmit={submitEventEnquiry} />;
+}
+stories.add('default', () => <BookingFormDemo />);

@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
-const testReducer = (state = [], action) => {
-  return [...state, action];
-};
-
-const rootReducer = combineReducers({ testReducer });
+const rootReducer = combineReducers({ form: formReducer });
 
 export default rootReducer;
