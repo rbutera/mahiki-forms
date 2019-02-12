@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { forEach } from 'rambda';
+import { forEach, split } from 'rambda';
+import { validateTime } from './validation';
 
 // https://redux-form.com/6.6.3/examples/syncvalidation/
 export const validateForm = values => {
@@ -23,16 +24,26 @@ export const validateForm = values => {
 
   if (!time) {
     errors.time = 'Please enter your intended arrival time';
+  }
 
-    // TODO:
-    if (false) {
-      errors.time =
-        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00';
-    }
+  if (time) {
+    const [hh, mm] = split(':')(time);
+    const hour = parseInt(hh, 10);
+    const minutes = parseInt(mm, 10);
 
-    if (false) {
-      errors.time =
-        'Invalid Arrival Time. You have selected a Late Night Event (above). Please enter a time between 22:00 and 03:00';
+    if (!validateTime(time)) {
+      errors.time = "Mahiki's opening hours are 18:00 - 03:00";
+    } else {
+      console.error('hour:', hour);
+      if (eoln === 'Evening' && !(hour >= 18 && hour < 22)) {
+        errors.time =
+          'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00';
+      }
+
+      if (false) {
+        errors.time =
+          'Invalid Arrival Time. You have selected a Late Night Event (above). Please enter a time between 22:00 and 03:00';
+      }
     }
   }
 

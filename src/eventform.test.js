@@ -30,12 +30,38 @@ describe('eventform', () => {
       expect(errors).not.toContainKey('additional');
     });
 
+    it('enforces an arrival time during Mahiki opening hours', () => {
+      expect(validateForm({ eoln: 'Evening', time: '15:00' }))
+        .toBeDefined()
+        .toBeObject()
+        .toContainKey('time');
+      expect(validateForm({ eoln: 'Evening', time: '15:00' }).time).toEqual(
+        "Mahiki's opening hours are 18:00 - 03:00"
+      );
+      expect(validateForm({ eoln: 'Evening', time: '15:69' }).time).toEqual(
+        "Mahiki's opening hours are 18:00 - 03:00"
+      );
+      expect(validateForm({ eoln: 'Late', time: '22:00' }))
+        .toBeDefined()
+        .not.toContainKey('time');
+      expect(validateForm({ eoln: 'Evening', time: '18:45' }))
+        .toBeDefined()
+        .not.toContainKey('time');
+    });
+
     it('enforces an arrival time between 18:00 and 22:00 for Evening events', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ eoln: 'Evening', time: '22:15' }).time).toEqual(
+        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00'
+      );
+      expect(validateForm({ eoln: 'Evening', time: '00:00' }).time).toEqual(
+        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00'
+      );
     });
 
     it('enforces an arrival time between 22:00 and 03:00 for Evening events', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ eoln: 'Late', time: '19:00' }).time).toEqual(
+        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00'
+      );
     });
 
     it('updates error.name if name is missing/invalid', () => {
