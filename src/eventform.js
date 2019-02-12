@@ -1,6 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+// https://redux-form.com/6.6.3/examples/syncvalidation/
+const validateForm = values => {
+  const errors = {};
+
+  return errors;
+};
+
 let eventForm = props => {
   const { handleSubmit } = props;
   return (
