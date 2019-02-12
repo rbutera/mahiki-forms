@@ -47,11 +47,12 @@ describe('validateNumPeople', () => {
 });
 describe('validateDate', () => {
   it('validates Date correctly', () => {
-    const fmt = 'DD/MM/YYYY';
+    const fmt = 'YYYY-MM-DD';
     const today = format(new Date(), fmt);
     const yesterday = format(subDays(new Date(), 1), fmt);
     const tomorrow = format(addDays(new Date(), 1), fmt);
     expect(validateDate(yesterday)).toEqual(false);
+    console.error('validateDate today test');
     expect(validateDate(today)).toEqual(true);
     expect(validateDate(tomorrow)).toEqual(true);
   });

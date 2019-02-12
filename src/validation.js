@@ -28,17 +28,18 @@ export function validateNumPeople(input: number): boolean {
   return input > 0;
 }
 
-export function validateDate(input: string = '01/01/1980'): boolean {
+export function validateDate(input: string = '2001/09/11'): boolean {
   // TODO
-  const [DD, MM, YYYY] = split('/')(input);
-  console.debug(`input: ${DD} / ${MM - 1} / ${YYYY}`);
+  const [YYYY, MM, DD] = split('-')(input);
+  console.debug(`input: ${DD} / ${MM} / ${YYYY}`);
   const today = now();
-  const todayFormatted = format(today, 'DD/MM/YYYY');
+  const todayFormatted = format(today, 'YYYY-MM-DD');
   if (!input) {
     return false;
   }
+  console.log(`YYYY/MM/DD = ${YYYY}/${MM}/${DD}`);
   const parsed = parse(new Date(YYYY, MM - 1, DD));
-  console.debug(`checking if input is today`);
+  console.debug(`checking if ${input} is today`);
 
   if (todayFormatted === input) {
     console.debug('input is today. valid.');
@@ -71,7 +72,7 @@ export function validateTime(input: string = '00:00'): boolean {
     return false;
   }
 
-  console.debug(`${input} is a valid time`);
+  // console.debug(`${input} is a valid time`);
 
   return true;
 }

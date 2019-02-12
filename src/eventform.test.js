@@ -4,7 +4,7 @@ import { validateForm, warnForm } from './eventform';
 describe('eventform', () => {
   describe('warnForm', () => {
     let validValues;
-    const fmt = 'DD/MM/YYYY';
+    const fmt = 'YYYY-MM-DD';
     const today = format(new Date(), fmt);
 
     beforeEach(() => {
@@ -40,7 +40,7 @@ describe('eventform', () => {
   describe('validateForm', () => {
     let validValues;
     beforeEach(() => {
-      const fmt = 'DD/MM/YYYY';
+      const fmt = 'YYYY-MM-DD';
       const tomorrow = format(addDays(new Date(), 1), fmt);
 
       validValues = {
@@ -186,7 +186,7 @@ describe('eventform', () => {
     });
 
     it('updates error.date if date is invalid (e.g. in the past) or missing', () => {
-      const fmt = 'DD/MM/YYYY';
+      const fmt = 'DD-MM-YYYY';
       const today = format(new Date(), fmt);
       console.log(`today: ${today}`);
       const yesterday = format(subDays(new Date(), 1), fmt);

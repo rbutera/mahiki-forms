@@ -9,7 +9,7 @@ import {
   validatePhoneNumber,
   validateDate
 } from './validation';
-const DATE_FORMAT = 'DD/MM/YYYY';
+const DATE_FORMAT = 'YYYY-MM-DD';
 
 export const warnForm = values => {
   const warnings = {};
@@ -65,7 +65,7 @@ export const validateForm = values => {
     if (!validateTime(time)) {
       errors.time = "Mahiki's opening hours are 18:00 - 03:00";
     } else {
-      console.error('hour:', hour);
+      // console.error('hour:', hour);
       if (eoln === 'Evening' && !(hour >= 18 && hour < 22)) {
         errors.time =
           'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00';
@@ -86,64 +86,74 @@ export const validateForm = values => {
   return errors;
 };
 
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: { touched, error, warning }
+}) => (
+  <div
+    className={
+      'form-group ' +
+      (touched && error ? 'has-error' : '') +
+      (touched && warning ? 'has-warning' : '')
+    }
+  >
+    <label className="control-label">{label}</label>
+    <input
+      className="form-control"
+      {...input}
+      placeholder={label}
+      type={type}
+    />
+    {touched &&
+      ((error && <p className="help-block">{error}</p>) ||
+        (warning && <p className="help-block">{warning}</p>))}
+  </div>
+);
+
 let eventForm = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, pristine, reset, submitting } = props;
   return (
     <div className="booking-form">
       <h1>Event Enquiry</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label for="book-event-name">Name</label>
-          <Field
-            name="name"
-            component="input"
-            type="text"
-            className="form-control"
-            id="book-event-name"
-            placeholder="Name"
-          />
-          <p className="help-block">Please enter your name.</p>
-        </div>
-        <div className="form-group">
-          <label for="book-event-email">Email address</label>
-          <Field
-            name="email"
-            component="input"
-            type="email"
-            className="form-control"
-            id="book-event-email"
-            placeholder="Email"
-          />
-          <p className="help-block">Please enter a valid email address.</p>
-        </div>
-        <div className="form-group">
-          <label for="book-event-phone">Phone No.</label>
-          <Field
-            name="phone"
-            component="input"
-            type="tel"
-            className="form-control"
-            id="book-event-phone"
-            placeholder="Phone No."
-          />
-          <p className="help-block">
-            Please provide a UK Phone Number or Mobile Telephone Number.
-          </p>
-        </div>
-        <div className="form-group">
-          <label for="book-event-date">Date of Event</label>
-          <Field
-            name="date"
-            component="input"
-            type="date"
-            className="form-control"
-            id="book-event-date"
-            placeholder="Date of Visit"
-          />
-          <p className="help-block">
-            Please choose a valid date for your event
-          </p>
-        </div>
+        <Field
+          name="name"
+          component={renderField}
+          type="text"
+          className="form-control"
+          id="book-event-name"
+          label="Name"
+        />
+
+        <Field
+          name="email"
+          component={renderField}
+          type="email"
+          className="form-control"
+          id="book-event-email"
+          label="Email"
+        />
+
+        <Field
+          name="phone"
+          component={renderField}
+          type="tel"
+          className="form-control"
+          id="book-event-phone"
+          label="Phone No."
+        />
+
+        <Field
+          name="date"
+          component={renderField}
+          type="date"
+          className="form-control"
+          id="book-event-date"
+          label="Date of Visit"
+        />
+
         <div className="form-group">
           <label for="book-event-toe">Type of Event</label>
           <Field
@@ -172,48 +182,26 @@ let eventForm = props => {
             <option value="Evening">Evening (18:00 - 22:00)</option>
             <option value="Late">Late Night (22:00 - 03:00)</option>
           </Field>
-          <p className="help-block">
-            Please select whether your event is an Evening or Late Night event
-          </p>
         </div>
 
-        <div className="form-group">
-          <label for="book-event-time">Arrival Time</label>
-          <Field
-            name="time"
-            component="input"
-            type="time"
-            className="form-control"
-            id="book-event-time"
-            placeholder="Arrival Time"
-          />
-          <p className="help-block">Please enter your intended arrival time</p>
-          <p className="help-block">
-            Invalid Arrival Time. You have selected{' '}
-            <strong>an Evening Event</strong> (above). Please enter a time
-            between 18:00 and 22:00
-          </p>
-          <p className="help-block">
-            Invalid Arrival Time. You have selected{' '}
-            <strong>a Late Night Event</strong> (above). Please enter a time
-            between 22:00 and 02:00
-          </p>
-        </div>
+        <Field
+          name="time"
+          component={renderField}
+          type="time"
+          className="form-control"
+          id="book-event-time"
+          label="Arrival Time"
+        />
 
-        <div className="form-group">
-          <label for="book-event-numpeople">Number of People</label>
-          <Field
-            name="numpeople"
-            component="input"
-            type="number"
-            className="form-control"
-            id="book-event-numpeople"
-            placeholder="No. of People"
-          />
-          <p className="help-block">
-            Please enter the number of people that will be attending your event.
-          </p>
-        </div>
+        <Field
+          name="numpeople"
+          component={renderField}
+          type="number"
+          className="form-control"
+          id="book-event-numpeople"
+          label="No. of People"
+        />
+
         <div className="form-group">
           <label>Also Required:</label>
           <div className="checkbox">
@@ -252,7 +240,8 @@ let eventForm = props => {
             placeholder="Additional requests and comments to add to your booking enquiry (optional)"
           />
         </div>
-        <button type="submit" className="btn btn-default">
+
+        <button className="btn btn-default" type="submit" disabled={submitting}>
           Send Event Enquiry
         </button>
       </form>
@@ -261,7 +250,9 @@ let eventForm = props => {
 };
 
 export const EventForm = reduxForm({
-  form: 'book-event'
+  form: 'book-event',
+  warn: warnForm,
+  validate: validateForm
 })(eventForm);
 
 export default EventForm;
