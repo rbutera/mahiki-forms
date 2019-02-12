@@ -83,14 +83,67 @@ describe('eventform', () => {
       expect(validateForm({ name: 'Charles_' }))
         .toBeDefined()
         .toContainKey('name');
+      expect(validateForm(validValues))
+        .toBeDefined()
+        .not.toContainKey('name');
     });
 
     it('updates error.email if email is missing/invalid', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ email: 1337 }))
+        .toBeDefined()
+        .toContainKey('email');
+      expect(validateForm({ name: '1337' }))
+        .toBeDefined()
+        .toContainKey('email');
+      expect(validateForm({ email: '' }))
+        .toBeDefined()
+        .toContainKey('email');
+      expect(validateForm({ email: undefined }))
+        .toBeDefined()
+        .toContainKey('email');
+      expect(validateForm({ email: 'Charles1' }))
+        .toBeDefined()
+        .toContainKey('email');
+      expect(validateForm({ email: 'Charles_' }))
+        .toBeDefined()
+        .toContainKey('email');
+
+      expect(validateForm({ email: 'Charles_@@google.com' }))
+        .toBeDefined()
+        .toContainKey('email');
+
+      expect(validateForm(validValues))
+        .toBeDefined()
+        .not.toContainKey('email');
     });
 
     it('updates error.phone if phone is invalid/missing', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ phone: 1337 }))
+        .toBeDefined()
+        .toContainKey('phone');
+      expect(validateForm({ phone: '1337' }))
+        .toBeDefined()
+        .toContainKey('phone');
+      expect(validateForm({ phone: '' }))
+        .toBeDefined()
+        .toContainKey('phone');
+      expect(validateForm({ phone: undefined }))
+        .toBeDefined()
+        .toContainKey('phone');
+      expect(validateForm({ phone: 'Charles1' }))
+        .toBeDefined()
+        .toContainKey('phone');
+      expect(validateForm({ phone: 'Charles_' }))
+        .toBeDefined()
+        .toContainKey('phone');
+
+      expect(validateForm({ phone: '020 7493 9529' }))
+        .toBeDefined()
+        .not.toContainKey('phone');
+
+      expect(validateForm(validValues))
+        .toBeDefined()
+        .not.toContainKey('phone');
     });
 
     it('updates error.date if date is invalid/missing', () => {

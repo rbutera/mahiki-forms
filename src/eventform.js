@@ -1,7 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { forEach, split } from 'rambda';
-import { validateTime, validateName } from './validation';
+import {
+  validateTime,
+  validateName,
+  validateEmail,
+  validatePhoneNumber
+} from './validation';
 
 // https://redux-form.com/6.6.3/examples/syncvalidation/
 export const validateForm = values => {
@@ -19,7 +24,12 @@ export const validateForm = values => {
   if (!email) {
     errors.email = 'Please enter your email address';
   }
-  if (!phone) {
+
+  if (!validateEmail(email)) {
+    errors.email = 'Please enter a valid email address.';
+  }
+
+  if (!phone || !validatePhoneNumber(phone)) {
     errors.phone =
       'Please provide a UK Phone Number or Mobile Telephone Number.';
   }
