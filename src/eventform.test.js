@@ -1,14 +1,18 @@
+import { format, addDays, subDays } from 'date-fns';
 import { validateForm } from './eventform';
 
 describe('eventform', () => {
   describe('validateForm', () => {
     let validValues;
     beforeEach(() => {
+      const fmt = 'DD/MM/YYYY';
+      const tomorrow = format(addDays(new Date(), 1), fmt);
+
       validValues = {
         name: 'Rai Butera',
         email: 'rai@rbutera.com',
         phone: '07780688428',
-        date: 'rai@rbutera.com  ',
+        date: tomorrow,
         toe: 'Corporate',
         eoln: 'Evening',
         time: '19:00',
@@ -147,7 +151,27 @@ describe('eventform', () => {
     });
 
     it('updates error.date if date is invalid/missing', () => {
-      throw new Error('not yet implemented');
+      const fmt = 'DD/MM/YYYY';
+      const today = format(new Date(), fmt);
+      console.log(`today: ${today}`);
+      const yesterday = format(subDays(new Date(), 1), fmt);
+
+      const missingDate = { ...validValues, date: undefined };
+      const past = { ...validValues, date: yesterday };
+      expect(validateForm(missingDate))
+        .toBeDefined()
+        .toBeObject()
+        .toContainKey('date');
+      expect(validateForm(missingDate).date).toBeString();
+      expect(validateForm(past))
+        .toBeDefined()
+        .toBeObject()
+        .toContainKey('date');
+      expect(validateForm(past).date).toBeString();
+      expect(validateForm(validValues))
+        .toBeDefined()
+        .toBeObject()
+        .not.toContainKey('date');
     });
 
     it('updates error.eoln if eoln is invalid/missing', () => {

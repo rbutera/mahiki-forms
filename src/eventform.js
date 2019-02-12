@@ -5,7 +5,8 @@ import {
   validateTime,
   validateName,
   validateEmail,
-  validatePhoneNumber
+  validatePhoneNumber,
+  validateDate
 } from './validation';
 
 // https://redux-form.com/6.6.3/examples/syncvalidation/
@@ -33,7 +34,7 @@ export const validateForm = values => {
     errors.phone =
       'Please provide a UK Phone Number or Mobile Telephone Number.';
   }
-  if (!date) {
+  if (!date || !validateDate(date)) {
     errors.date = 'Please choose a valid date for your event';
   }
 
