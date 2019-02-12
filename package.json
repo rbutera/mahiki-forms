@@ -53,10 +53,13 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.1.0",
     "jest-chain": "^1.1.2",
+    "jest-extended": "^0.11.1",
     "prettier": "^1.16.4",
     "storybook-addon-redux-listener": "^0.1.7"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./test-setup.js"
+    "setupFilesAfterEnv": [
+      "./test-setup.js"
+    ]
   }
 }

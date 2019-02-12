@@ -1,9 +1,45 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { forEach } from 'rambda';
 
 // https://redux-form.com/6.6.3/examples/syncvalidation/
-const validateForm = values => {
+export const validateForm = values => {
   const errors = {};
+  const { name, email, phone, date, toe, eoln, time, numpeople } = values;
+
+  if (!name) {
+    errors.name = 'Please enter your name';
+  }
+  if (!email) {
+    errors.email = 'Please enter your email address';
+  }
+  if (!phone) {
+    errors.phone =
+      'Please provide a UK Phone Number or Mobile Telephone Number.';
+  }
+  if (!date) {
+    errors.date = 'Please choose a valid date for your event';
+  }
+
+  if (!time) {
+    errors.time = 'Please enter your intended arrival time';
+
+    // TODO:
+    if (false) {
+      errors.time =
+        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00';
+    }
+
+    if (false) {
+      errors.time =
+        'Invalid Arrival Time. You have selected a Late Night Event (above). Please enter a time between 22:00 and 03:00';
+    }
+  }
+
+  if (!numpeople) {
+    errors.numpeople =
+      'Please enter the number of people that will be attending your event.';
+  }
 
   return errors;
 };
@@ -67,12 +103,12 @@ let eventForm = props => {
           </p>
         </div>
         <div className="form-group">
-          <label for="book-event-type">Type of Event</label>
+          <label for="book-event-toe">Type of Event</label>
           <Field
-            name="date"
+            name="toe"
             component="select"
             className="form-control"
-            id="book-event-type"
+            id="book-event-toe"
             placeholder="Type of Event"
           >
             <option value="Birthday">Birthday</option>
@@ -167,7 +203,7 @@ let eventForm = props => {
         <div className="form-group">
           <label for="book-event-additional">Additional Requests</label>
           <Field
-            name="name"
+            name="additional"
             component="textarea"
             className="form-control"
             id="book-event-additional"
