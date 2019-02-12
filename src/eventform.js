@@ -30,7 +30,7 @@ export const validateForm = values => {
   }
 
   if (!validateName(name)) {
-    errors.name = 'Please enter alphabetical characters only please.';
+    errors.name = 'Please enter alphabetical characters only';
   }
 
   if (!email) {
@@ -151,7 +151,7 @@ let eventForm = props => {
           type="date"
           className="form-control"
           id="book-event-date"
-          label="Date of Visit"
+          label="Date of Visit (day/month/year)"
         />
 
         <div className="form-group">
