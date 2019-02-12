@@ -49,12 +49,8 @@ describe('validateDate', () => {
   it('validates Date correctly', () => {
     const fmt = 'DD/MM/YYYY';
     const today = format(new Date(), fmt);
-    console.log(`today: ${today}`);
-    debugger;
     const yesterday = format(subDays(new Date(), 1), fmt);
-    console.log(`yesterday: ${yesterday}`);
     const tomorrow = format(addDays(new Date(), 1), fmt);
-    console.log(`tomorrow: ${tomorrow}`);
     expect(validateDate(yesterday)).toEqual(false);
     expect(validateDate(today)).toEqual(true);
     expect(validateDate(tomorrow)).toEqual(true);

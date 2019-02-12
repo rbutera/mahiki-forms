@@ -193,7 +193,29 @@ describe('eventform', () => {
     });
 
     it('updates error.numpeople if numpeople is invalid/missing', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ numpeople: undefined }))
+        .toBeDefined()
+        .toContainKey('numpeople');
+
+      expect(validateForm({ numpeople: 0 }))
+        .toBeDefined()
+        .toContainKey('numpeople');
+
+      expect(validateForm({ numpeople: 1 }))
+        .toBeDefined()
+        .not.toContainKey('numpeople');
+
+      expect(validateForm({ numpeople: 3 }))
+        .toBeDefined()
+        .not.toContainKey('numpeople');
+
+      expect(validateForm({ numpeople: 33 }))
+        .toBeDefined()
+        .not.toContainKey('numpeople');
+
+      expect(validateForm({ numpeople: 1337 }))
+        .toBeDefined()
+        .not.toContainKey('numpeople');
     });
   });
 });
