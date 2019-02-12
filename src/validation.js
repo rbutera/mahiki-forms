@@ -1,7 +1,7 @@
 // @flow
 
 import { contains, split } from 'rambda';
-import { parse, isBefore } from 'date-fns';
+import { parse, isBefore, format } from 'date-fns';
 import { now } from './now';
 
 export function validateName(input: string = ''): boolean {
@@ -31,14 +31,22 @@ export function validateNumPeople(input: number): boolean {
 export function validateDate(input: string = '01/01/1980'): boolean {
   // TODO
   const [DD, MM, YYYY] = split('/')(input);
-
+  console.debug(`input: ${DD} / ${MM - 1} / ${YYYY}`);
   const today = now();
+  const todayFormatted = format(today, 'DD/MM/YYYY');
   if (!input) {
     return false;
   }
-  const parsed = parse(new Date(YYYY, MM, DD));
+  const parsed = parse(new Date(YYYY, MM - 1, DD));
+  console.debug(`checking if input is today`);
+
+  if (todayFormatted === input) {
+    console.debug('input is today. valid.');
+    return true;
+  }
 
   console.debug(`checking if ${parsed} is before/after ${today}`);
+
   if (isBefore(parsed, today)) {
     console.error(`given date is in the past`);
     return false;
