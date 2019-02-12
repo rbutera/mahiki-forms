@@ -58,9 +58,9 @@ describe('eventform', () => {
       );
     });
 
-    it('enforces an arrival time between 22:00 and 03:00 for Evening events', () => {
+    it('enforces an arrival time between 22:00 and 03:00 for Late Night events', () => {
       expect(validateForm({ eoln: 'Late', time: '19:00' }).time).toEqual(
-        'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00'
+        'Invalid Arrival Time. You have selected a Late Night Event (above). Please enter a time between 22:00 and 03:00'
       );
     });
 

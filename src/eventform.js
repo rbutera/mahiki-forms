@@ -40,7 +40,7 @@ export const validateForm = values => {
           'Invalid Arrival Time. You have selected an Evening Event (above). Please enter a time between 18:00 and 22:00';
       }
 
-      if (false) {
+      if (eoln === 'Late' && !((hour >= 0 && hour < 3) || hour >= 22)) {
         errors.time =
           'Invalid Arrival Time. You have selected a Late Night Event (above). Please enter a time between 22:00 and 03:00';
       }

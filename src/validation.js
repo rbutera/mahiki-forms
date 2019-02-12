@@ -5,7 +5,7 @@ import { parse, isBefore, format } from 'date-fns';
 import { now } from './now';
 
 export function validateName(input: string = ''): boolean {
-  if (input) {
+  if (input && /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(input)) {
     return true;
   }
   return false;
