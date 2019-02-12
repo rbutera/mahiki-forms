@@ -42,6 +42,10 @@ export const validateForm = values => {
     errors.time = 'Please enter your intended arrival time';
   }
 
+  if (!eoln || !(eoln === 'Late' || eoln === 'Evening')) {
+    errors.eoln = 'Please select Evening or Late Night';
+  }
+
   if (time) {
     const [hh, mm] = split(':')(time);
     const hour = parseInt(hh, 10);

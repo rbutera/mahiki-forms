@@ -150,7 +150,7 @@ describe('eventform', () => {
         .not.toContainKey('phone');
     });
 
-    it('updates error.date if date is invalid/missing', () => {
+    it('updates error.date if date is invalid (e.g. in the past) or missing', () => {
       const fmt = 'DD/MM/YYYY';
       const today = format(new Date(), fmt);
       console.log(`today: ${today}`);
@@ -175,7 +175,21 @@ describe('eventform', () => {
     });
 
     it('updates error.eoln if eoln is invalid/missing', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ eoln: undefined }))
+        .toBeDefined()
+        .toContainKey('eoln');
+      expect(validateForm({ eoln: 'foo' }))
+        .toBeDefined()
+        .toContainKey('eoln');
+      expect(validateForm({ eoln: 123 }))
+        .toBeDefined()
+        .toContainKey('eoln');
+      expect(validateForm({ eoln: {} }))
+        .toBeDefined()
+        .toContainKey('eoln');
+      expect(validateForm(validValues))
+        .toBeDefined()
+        .not.toContainKey('eoln');
     });
 
     it('updates error.numpeople if numpeople is invalid/missing', () => {
