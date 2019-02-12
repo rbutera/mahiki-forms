@@ -65,7 +65,24 @@ describe('eventform', () => {
     });
 
     it('updates error.name if name is missing/invalid', () => {
-      throw new Error('not yet implemented');
+      expect(validateForm({ name: 1337 }))
+        .toBeDefined()
+        .toContainKey('name');
+      expect(validateForm({ name: '1337' }))
+        .toBeDefined()
+        .toContainKey('name');
+      expect(validateForm({ name: '' }))
+        .toBeDefined()
+        .toContainKey('name');
+      expect(validateForm({ name: undefined }))
+        .toBeDefined()
+        .toContainKey('name');
+      expect(validateForm({ name: 'Charles1' }))
+        .toBeDefined()
+        .toContainKey('name');
+      expect(validateForm({ name: 'Charles_' }))
+        .toBeDefined()
+        .toContainKey('name');
     });
 
     it('updates error.email if email is missing/invalid', () => {
