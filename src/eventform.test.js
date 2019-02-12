@@ -1,7 +1,42 @@
 import { format, addDays, subDays } from 'date-fns';
-import { validateForm } from './eventform';
+import { validateForm, warnForm } from './eventform';
 
 describe('eventform', () => {
+  describe('warnForm', () => {
+    let validValues;
+    const fmt = 'DD/MM/YYYY';
+    const today = format(new Date(), fmt);
+
+    beforeEach(() => {
+      validValues = {
+        name: 'Rai Butera',
+        email: 'rai@rbutera.com',
+        phone: '07780688428',
+        date: today,
+        toe: 'Corporate',
+        eoln: 'Evening',
+        time: '19:00',
+        numpeople: 24,
+        dj: true,
+        food: false,
+        cocktails: true,
+        additional:
+          "I'll have two number 9s, a number 9 large, a number 6 with extra dip, a number 7, two number 45s, one with cheese, and a large soda."
+      };
+    });
+
+    it('warns if date is today', () => {
+      expect(warnForm({ date: today }))
+        .toBeObject()
+        .toContainKey('date');
+      const tomorrow = format(addDays(new Date(), 1), fmt);
+
+      expect(warnForm({ date: tomorrow }))
+        .toBeObject()
+        .not.toContainKey('date');
+    });
+  });
+
   describe('validateForm', () => {
     let validValues;
     beforeEach(() => {

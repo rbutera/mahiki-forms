@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { forEach, split } from 'rambda';
+import { format } from 'date-fns';
 import {
   validateTime,
   validateName,
@@ -8,7 +9,17 @@ import {
   validatePhoneNumber,
   validateDate
 } from './validation';
+const DATE_FORMAT = 'DD/MM/YYYY';
 
+export const warnForm = values => {
+  const warnings = {};
+  const today = format(new Date(), DATE_FORMAT);
+  if (values.date && values.date === today) {
+    warnings.date =
+      'For same day reservations and parties over 10 please call us on 020 7493 9529';
+  }
+  return warnings;
+};
 // https://redux-form.com/6.6.3/examples/syncvalidation/
 export const validateForm = values => {
   const errors = {};
