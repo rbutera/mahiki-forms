@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-
+import submitBookTable from './submit/table';
 let tableForm = props => {
   const { handleSubmit } = props;
   return (
@@ -110,4 +110,7 @@ export const TableForm = reduxForm({
   form: 'book-table'
 })(tableForm);
 
+export function TableFormContainer() {
+  return <TableForm onSubmit={submitBookTable} />;
+}
 export default TableForm;

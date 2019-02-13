@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { forEach, split } from 'rambda';
+import { split } from 'rambda';
 import { format } from 'date-fns';
+import submitEventEnquiry from './submit/event';
 import {
   validateTime,
   validateName,
@@ -242,7 +243,7 @@ let eventForm = props => {
         </div>
 
         <button className="btn btn-default" type="submit" disabled={submitting}>
-          Send Event Enquiry
+          {submitting ? '...' : 'Send Event Enquiry'}
         </button>
       </form>
     </div>
@@ -255,4 +256,8 @@ export const EventForm = reduxForm({
   validate: validateForm
 })(eventForm);
 
-export default EventForm;
+export function EventFormContainer() {
+  return <EventForm onSubmit={submitEventEnquiry} />;
+}
+
+export default EventFormContainer;

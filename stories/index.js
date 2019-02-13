@@ -21,12 +21,12 @@ const withReduxDecorator = withRedux(addons)(withReduxSettings);
 const stories = storiesOf('Booking Forms', module);
 stories.addDecorator(withReduxDecorator);
 
-function EventFormDemo() {
+function EventFormContainer() {
   return <EventForm onSubmit={submitEventEnquiry} />;
 }
 
-function TableFormDemo() {
+function TableFormContainer() {
   return <TableForm onSubmit={submitBookTable} />;
 }
-stories.add('Events', () => <EventFormDemo />);
-stories.add('Book a Table', () => <TableFormDemo />);
+stories.add('Events', () => <EventFormContainer />);
+stories.add('Book a Table', () => <TableFormContainer />);
