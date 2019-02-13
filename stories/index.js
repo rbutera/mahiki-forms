@@ -6,8 +6,8 @@ import withRedux from 'addon-redux/withRedux';
 import store from '../src/configureStore';
 import { EventForm } from '../src/eventform';
 import { TableForm } from '../src/tableform';
-import { submitEventEnquiry } from '../src/event';
-import { submitBookTable } from '../src/table';
+import submitEventEnquiry from '../src/submit/event';
+import submitBookTable from '../src/submit/table';
 
 const withReduxSettings = {
   Provider,
