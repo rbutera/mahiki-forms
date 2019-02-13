@@ -243,7 +243,7 @@ let eventForm = props => {
         </div>
 
         <button className="btn btn-default" type="submit" disabled={submitting}>
-          {submitting ? '...' : 'Send Event Enquiry'}
+          {submitting ? 'Sending' : 'Send Request'}
         </button>
       </form>
     </div>
