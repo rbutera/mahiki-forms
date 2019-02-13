@@ -2,7 +2,8 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { split } from 'rambda';
 import { format } from 'date-fns';
-import submitEventEnquiry from './submit/event';
+import PulseLoader from 'react-spinners/PulseLoader';
+import submit from './submit/event';
 import {
   validateTime,
   validateName,
@@ -114,7 +115,23 @@ const renderField = ({
 );
 
 let eventForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+  const { handleSubmit, pristine, reset, invalid, valid, submitting } = props;
+  const renderSubmitText = () => {
+    if (submitting) {
+      return (
+        <PulseLoader
+          sizeUnit="em"
+          size={1}
+          color="#FFFFFF"
+          loading={submitting}
+        />
+      );
+    }
+    if (pristine || valid) {
+      return 'Send Request';
+    }
+    return 'Cannot Send Request - Check Errors';
+  };
   return (
     <div className="booking-form">
       <h1>Event Enquiry</h1>
@@ -242,8 +259,16 @@ let eventForm = props => {
           />
         </div>
 
-        <button className="btn btn-default" type="submit" disabled={submitting}>
-          {submitting ? 'Sending' : 'Send Request'}
+        <button
+          className={`btn btn-lg
+          ${pristine ? ' btn-default' : ''} 
+          ${valid ? ' btn-success' : ''}
+          ${invalid && !pristine ? ' btn-danger' : ''}
+          ${submitting ? ' btn-warning' : ''}`}
+          type="submit"
+          disabled={submitting}
+        >
+          {renderSubmitText()}
         </button>
       </form>
     </div>
@@ -257,7 +282,7 @@ export const EventForm = reduxForm({
 })(eventForm);
 
 export function EventFormContainer() {
-  return <EventForm onSubmit={submitEventEnquiry} />;
+  return <EventForm onSubmit={submit} />;
 }
 
 export default EventFormContainer;
