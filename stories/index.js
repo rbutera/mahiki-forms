@@ -30,11 +30,25 @@ stories.add('SuccessModal', () => (
     }}
   />
 ));
+const errors = {
+  age: 'Please provide your age.',
+  foo: 'Please provide your name.',
+  counterstrike: 'Global Offensive'
+};
 stories.add('FailureModal', () => (
   <FailureModal
     show
     onHide={() => {
       alert('hide');
     }}
+  />
+));
+stories.add('FailureModal with errors', () => (
+  <FailureModal
+    show
+    onHide={() => {
+      alert('hide');
+    }}
+    errors={errors}
   />
 ));

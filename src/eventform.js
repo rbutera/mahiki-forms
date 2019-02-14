@@ -31,9 +31,7 @@ export const validateForm = values => {
 
   if (!name) {
     errors.name = 'Please enter your name';
-  }
-
-  if (!validateName(name)) {
+  } else if (!validateName(name)) {
     errors.name = 'Please enter alphabetical characters only';
   }
 
@@ -318,8 +316,8 @@ export class EventFormContainer extends Component {
     this.setState({ done: true, sent: false, failed: false });
   };
 
-  showFailure = () => {
-    this.setState({ done: false, sent: false, failed: true });
+  showFailure = errors => {
+    this.setState({ done: false, sent: false, failed: true, errors });
   };
 
   hideFailure = () => {
@@ -327,12 +325,14 @@ export class EventFormContainer extends Component {
   };
 
   render() {
-    const { sent, failed, done } = this.state;
+    const { sent, failed, done, errors } = this.state;
     const { hideSuccess, hideFailure } = this;
     return (
       <div>
         {sent && <SuccessModal show={sent} onHide={hideSuccess} />}
-        {failed && <FailureModal show={failed} onHide={hideFailure} />}
+        {failed && (
+          <FailureModal show={failed} onHide={hideFailure} errors={errors} />
+        )}
 
         <div className="container">
           <EventForm
