@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 
-export const SuccessModal = (...props) => {
+export const SuccessModal = props => {
   const { show, onHide } = props;
   return (
     <div className="success-modal">
@@ -29,7 +29,7 @@ export const SuccessModal = (...props) => {
   );
 };
 
-export const FailureModal = (...props) => {
+export const FailureModal = props => {
   const { show, onHide } = props;
   return (
     <div className="failure-modal">

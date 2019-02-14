@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { split } from 'rambda';
 import { format } from 'date-fns';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { MdCheck } from 'react-icons/md';
 import submit from './submit/event';
 import {
   validateTime,
@@ -116,7 +117,15 @@ const renderField = ({
 );
 
 let eventForm = props => {
-  const { handleSubmit, pristine, reset, invalid, valid, submitting } = props;
+  const {
+    handleSubmit,
+    pristine,
+    done,
+    reset,
+    invalid,
+    valid,
+    submitting
+  } = props;
   const renderSubmitText = () => {
     if (submitting) {
       return (
@@ -126,6 +135,13 @@ let eventForm = props => {
           color="#FFFFFF"
           loading={submitting}
         />
+      );
+    }
+    if (done) {
+      return (
+        <div>
+          Request Sent <MdCheck />
+        </div>
       );
     }
     if (pristine || valid) {
@@ -170,7 +186,7 @@ let eventForm = props => {
           type="date"
           className="form-control"
           id="book-event-date"
-          label="Date of Visit (day/month/year)"
+          label="Date of Visit (dd/mm/yyyy)"
         />
 
         <div className="form-group">
@@ -261,13 +277,14 @@ let eventForm = props => {
         </div>
 
         <button
-          className={`btn btn-lg
+          className={`btn btn-lg btn-block
           ${pristine ? ' btn-default' : ''} 
-          ${valid ? ' btn-success' : ''}
+          ${done ? ' btn-success' : ''}
+          ${valid && !pristine ? ' btn-primary' : ''}
           ${invalid && !pristine ? ' btn-danger' : ''}
           ${submitting ? ' btn-warning' : ''}`}
           type="submit"
-          disabled={submitting}
+          disabled={submitting || done}
         >
           {renderSubmitText()}
         </button>
@@ -288,28 +305,29 @@ export class EventFormContainer extends Component {
     const { success = false, failure = false } = props;
     this.state = {
       sent: success,
-      failed: failure
+      failed: failure,
+      done: false
     };
   }
 
   showSuccess = () => {
-    this.setState({ sent: true, failed: false });
+    this.setState({ sent: true, done: true, failed: false });
   };
 
   hideSuccess = () => {
-    this.setState({ sent: false, failed: false });
+    this.setState({ done: true, sent: false, failed: false });
   };
 
   showFailure = () => {
-    this.setState({ sent: false, failed: true });
+    this.setState({ done: false, sent: false, failed: true });
   };
 
   hideFailure = () => {
-    this.setState({ sent: false, failed: false });
+    this.setState({ done: false, sent: false, failed: false });
   };
 
   render() {
-    const { sent, failed } = this.state;
+    const { sent, failed, done } = this.state;
     const { hideSuccess, hideFailure } = this;
     return (
       <div>
@@ -321,6 +339,7 @@ export class EventFormContainer extends Component {
             onSubmit={submit}
             onSubmitSuccess={this.showSuccess}
             onSubmitFail={this.showFailure}
+            done={done}
           />
         </div>
       </div>
