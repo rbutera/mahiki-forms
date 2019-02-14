@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-storyshots": "^4.1.11",
     "@storybook/cli": "^4.1.11",
     "@storybook/react": "^4.1.11",
     "babel-eslint": "^10.0.1",
@@ -59,6 +60,7 @@
     "jest-chain": "^1.1.2",
     "jest-extended": "^0.11.1",
     "prettier": "^1.16.4",
+    "react-test-renderer": "^16.8.1",
     "storybook-addon-redux-listener": "^0.1.7"
   },
   "jest": {
