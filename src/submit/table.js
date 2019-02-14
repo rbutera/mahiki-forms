@@ -10,8 +10,6 @@ function submit(values) {
         name: 'Test Error',
         _error: 'This is a test'
       });
-    } else {
-      alert('Success');
     }
   });
 }
