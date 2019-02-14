@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { split } from 'rambda';
 import { format } from 'date-fns';
@@ -11,6 +11,7 @@ import {
   validatePhoneNumber,
   validateDate
 } from './validation';
+import { SuccessModal, FailureModal } from './popup';
 const DATE_FORMAT = 'YYYY-MM-DD';
 
 export const warnForm = values => {
@@ -281,8 +282,49 @@ export const EventForm = reduxForm({
   validate: validateForm
 })(eventForm);
 
-export function EventFormContainer() {
-  return <EventForm onSubmit={submit} />;
+export class EventFormContainer extends Component {
+  constructor(props) {
+    super(props);
+    const { success = 0, failure = 0 } = props;
+    this.state = {
+      sent: success,
+      failed: failure
+    };
+  }
+
+  showSuccess = () => {
+    this.setState({ sent: 1, failed: 0 });
+  };
+
+  hideSuccess = () => {
+    this.setState({ sent: 0, failed: 0 });
+  };
+
+  showFailure = () => {
+    this.setState({ sent: 0, failed: 1 });
+  };
+
+  hideFailure = () => {
+    this.setState({ sent: 0, failed: 0 });
+  };
+
+  render() {
+    const { sent, failed } = this.state;
+    return (
+      <div>
+        {sent ? <SuccessModal onHide={this.hideSuccess} /> : ''}
+
+        <div className="container">
+          <EventForm
+            onSubmit={submit}
+            onSubmitSuccess={this.showSuccess}
+            onSubmitFail={this.showFailure}
+          />
+          {failed ? <p className="error">Send Failed</p> : ''}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default EventFormContainer;

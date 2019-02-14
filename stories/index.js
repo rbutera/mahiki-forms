@@ -6,6 +6,7 @@ import withRedux from 'addon-redux/withRedux';
 import store from '../src/configureStore';
 import { EventFormContainer } from '../src/eventform';
 import { TableFormContainer } from '../src/tableform';
+import { SuccessModal, FailureModal } from '../src/popup';
 
 const withReduxSettings = {
   Provider,
@@ -21,3 +22,17 @@ stories.addDecorator(withReduxDecorator);
 
 stories.add('Events', () => <EventFormContainer />);
 stories.add('Book a Table', () => <TableFormContainer />);
+stories.add('SuccessModal', () => (
+  <SuccessModal
+    onHide={() => {
+      alert('hide');
+    }}
+  />
+));
+stories.add('FailureModal', () => (
+  <FailureModal
+    onHide={() => {
+      alert('hide');
+    }}
+  />
+));

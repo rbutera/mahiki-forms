@@ -215,316 +215,326 @@ exports[`Storyshots Booking Forms Book a Table 1`] = `
 
 exports[`Storyshots Booking Forms Events 1`] = `
 <div
-  className="booking-form"
+  className="container"
 >
-  <h1>
-    Event Enquiry
-  </h1>
-  <form
-    onSubmit={[Function]}
+  
+  
+  <div
+    className="booking-form"
   >
-    <div
-      className="form-group "
+    <h1>
+      Event Enquiry
+    </h1>
+    <form
+      onSubmit={[Function]}
     >
-      <label
-        className="control-label"
-      >
-        Name
-      </label>
-      <input
-        className="form-control"
-        name="name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Name"
-        type="text"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group "
-    >
-      <label
-        className="control-label"
-      >
-        Email
-      </label>
-      <input
-        className="form-control"
-        name="email"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Email"
-        type="email"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group "
-    >
-      <label
-        className="control-label"
-      >
-        Phone No.
-      </label>
-      <input
-        className="form-control"
-        name="phone"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Phone No."
-        type="tel"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group "
-    >
-      <label
-        className="control-label"
-      >
-        Date of Visit (day/month/year)
-      </label>
-      <input
-        className="form-control"
-        name="date"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Date of Visit (day/month/year)"
-        type="date"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group"
-    >
-      <label
-        for="book-event-toe"
-      >
-        Type of Event
-      </label>
-      <select
-        className="form-control"
-        id="book-event-toe"
-        name="toe"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Type of Event"
-        value=""
-      >
-        <option
-          value="Birthday"
-        >
-          Birthday
-        </option>
-        <option
-          value="Private"
-        >
-          Private
-        </option>
-        <option
-          value="Corporate"
-        >
-          Corporate
-        </option>
-        <option
-          value="Christmas"
-        >
-          Christmas
-        </option>
-      </select>
-    </div>
-    <div
-      className="form-group"
-    >
-      <label
-        for="book-event-eoln"
-      >
-        Evening or Late Night
-      </label>
-      <select
-        className="form-control"
-        id="book-event-eoln"
-        name="eoln"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Evening or Late Night"
-        value=""
-      >
-        <option
-          value="Evening"
-        >
-          Evening (18:00 - 22:00)
-        </option>
-        <option
-          value="Late"
-        >
-          Late Night (22:00 - 03:00)
-        </option>
-      </select>
-    </div>
-    <div
-      className="form-group "
-    >
-      <label
-        className="control-label"
-      >
-        Arrival Time
-      </label>
-      <input
-        className="form-control"
-        name="time"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Arrival Time"
-        type="time"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group "
-    >
-      <label
-        className="control-label"
-      >
-        No. of People
-      </label>
-      <input
-        className="form-control"
-        name="numpeople"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="No. of People"
-        type="number"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group"
-    >
-      <label>
-        Also Required:
-      </label>
       <div
-        className="checkbox"
+        className="form-group "
       >
         <label
-          for="dj"
+          className="control-label"
         >
-          <input
-            checked={false}
-            id="dj"
-            name="dj"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="checkbox"
-            value=""
-          />
-          DJ
+          Name
         </label>
+        <input
+          className="form-control"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Name"
+          type="text"
+          value=""
+        />
       </div>
       <div
-        className="checkbox"
+        className="form-group "
       >
         <label
-          for="food"
+          className="control-label"
         >
-          <input
-            checked={false}
-            id="food"
-            name="food"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="checkbox"
-            value=""
-          />
-          Food
+          Email
         </label>
+        <input
+          className="form-control"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Email"
+          type="email"
+          value=""
+        />
       </div>
       <div
-        className="checkbox"
+        className="form-group "
       >
         <label
-          for="cocktails"
+          className="control-label"
         >
-          <input
-            checked={false}
-            id="cocktails"
-            name="cocktails"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onDragStart={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            type="checkbox"
-            value=""
-          />
-          Cocktails
+          Phone No.
         </label>
+        <input
+          className="form-control"
+          name="phone"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Phone No."
+          type="tel"
+          value=""
+        />
       </div>
-    </div>
-    <div
-      className="form-group"
-    >
-      <label
-        for="book-event-additional"
+      <div
+        className="form-group "
       >
-        Additional Requests
-      </label>
-      <textarea
-        className="form-control"
-        id="book-event-additional"
-        name="additional"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Additional requests and comments to add to your booking enquiry (optional)"
-        value=""
-      />
-    </div>
-    <button
-      className="btn btn-lg
+        <label
+          className="control-label"
+        >
+          Date of Visit (day/month/year)
+        </label>
+        <input
+          className="form-control"
+          name="date"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Date of Visit (day/month/year)"
+          type="date"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          for="book-event-toe"
+        >
+          Type of Event
+        </label>
+        <select
+          className="form-control"
+          id="book-event-toe"
+          name="toe"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Type of Event"
+          value=""
+        >
+          <option
+            value="Birthday"
+          >
+            Birthday
+          </option>
+          <option
+            value="Private"
+          >
+            Private
+          </option>
+          <option
+            value="Corporate"
+          >
+            Corporate
+          </option>
+          <option
+            value="Christmas"
+          >
+            Christmas
+          </option>
+        </select>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          for="book-event-eoln"
+        >
+          Evening or Late Night
+        </label>
+        <select
+          className="form-control"
+          id="book-event-eoln"
+          name="eoln"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Evening or Late Night"
+          value=""
+        >
+          <option
+            value="Evening"
+          >
+            Evening (18:00 - 22:00)
+          </option>
+          <option
+            value="Late"
+          >
+            Late Night (22:00 - 03:00)
+          </option>
+        </select>
+      </div>
+      <div
+        className="form-group "
+      >
+        <label
+          className="control-label"
+        >
+          Arrival Time
+        </label>
+        <input
+          className="form-control"
+          name="time"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Arrival Time"
+          type="time"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group "
+      >
+        <label
+          className="control-label"
+        >
+          No. of People
+        </label>
+        <input
+          className="form-control"
+          name="numpeople"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="No. of People"
+          type="number"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label>
+          Also Required:
+        </label>
+        <div
+          className="checkbox"
+        >
+          <label
+            for="dj"
+          >
+            <input
+              checked={false}
+              id="dj"
+              name="dj"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+              value=""
+            />
+            DJ
+          </label>
+        </div>
+        <div
+          className="checkbox"
+        >
+          <label
+            for="food"
+          >
+            <input
+              checked={false}
+              id="food"
+              name="food"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+              value=""
+            />
+            Food
+          </label>
+        </div>
+        <div
+          className="checkbox"
+        >
+          <label
+            for="cocktails"
+          >
+            <input
+              checked={false}
+              id="cocktails"
+              name="cocktails"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onDragStart={[Function]}
+              onDrop={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+              value=""
+            />
+            Cocktails
+          </label>
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          for="book-event-additional"
+        >
+          Additional Requests
+        </label>
+        <textarea
+          className="form-control"
+          id="book-event-additional"
+          name="additional"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Additional requests and comments to add to your booking enquiry (optional)"
+          value=""
+        />
+      </div>
+      <button
+        className="btn btn-lg
            btn-default 
           
           
           "
-      disabled={false}
-      type="submit"
-    >
-      Send Request
-    </button>
-  </form>
+        disabled={false}
+        type="submit"
+      >
+        Send Request
+      </button>
+    </form>
+  </div>
 </div>
 `;
+
+exports[`Storyshots Booking Forms FailureModal 1`] = `null`;
+
+exports[`Storyshots Booking Forms SuccessModal 1`] = `null`;

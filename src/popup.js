@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 export const SuccessModal = (...props) => {
   const { onHide } = props;
@@ -36,13 +37,15 @@ export const FailureModal = (...props) => {
       </Modal.Header>
       <Modal.Body>
         <h4>Sorry, something went wrong</h4>
-        <p>Thank you for your enquiry.</p>
         <p>
           Unfortunately, an error occurred and we were unable to process your
           request.
         </p>
+        <p>Please check that you have filled out all form fields correctly.</p>
         <p>
-          <strong>Please call 0207 493 9529 to complete your enquiry</strong>
+          <strong>
+            Alternatively, call 0207 493 9529 to complete your enquiry
+          </strong>
         </p>
       </Modal.Body>
       <Modal.Footer>
