@@ -24,7 +24,20 @@ function TablePage() {
     </div>
   );
 }
-const event = document.getElementById('mahiki-event-form-root');
-event ? render(EventPage, event) : false;
-const table = document.getElementById('mahiki-table-form-root');
-table ? render(TablePage, table) : false;
+const event = document.getElementById('mahiki-form-event-root');
+if (event) {
+  console.debug('rendering EventPage');
+  render(<EventPage />, event);
+} else {
+  console.debug('could not find mahiki-form-event-root element');
+}
+
+const table = document.getElementById('mahiki-form-table-root');
+if (table) {
+  console.debug('rendering TablePage');
+  render(<TablePage />, table);
+} else {
+  console.debug('could not find mahiki-form-table-root element');
+}
+
+console.info('mahiki-forms loaded');
