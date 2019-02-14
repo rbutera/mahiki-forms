@@ -1,56 +1,60 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/lib/Modal';
+import Button from 'react-bootstrap/lib/Button';
 
 export const SuccessModal = (...props) => {
-  const { onHide } = props;
+  const { show, onHide } = props;
   return (
-    <Modal {...props} size="lg" aria-labelledby="form-modal-success" centered>
-      <Modal.Header closeButton>
-        <Modal.Title id="form-modal-success">Thank You</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Success!</h4>
-        <p>Thank you for your enquiry.</p>
-        <p>
-          An email has been sent to your provided email address and has been
-          forwarded to our reservations team who will be in touch shortly.
-        </p>
-        <p>
-          Please call 0207 493 9529 if you have any further questions or for
-          same-day reservations
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+    <div className="success-modal">
+      <Modal show onHide={onHide} bsSize="large">
+        <Modal.Header closeButton>
+          <Modal.Title>Thank you for your enquiry.</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h5>Your enquiry has been successfully sent.</h5>
+          <p>
+            An email has been sent to your provided email address and has been
+            forwarded to our reservations team who will be in touch shortly.
+          </p>
+          <p>
+            Please call <a href="tel:+442074939529">0207 493 9529</a> if you
+            have any further questions or for same-day reservations
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   );
 };
 
 export const FailureModal = (...props) => {
-  const { onHide } = props;
+  const { show, onHide } = props;
   return (
-    <Modal {...props} size="lg" aria-labelledby="form-modal-error" centered>
-      <Modal.Header closeButton>
-        <Modal.Title id="form-modal-error">Error</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <h4>Sorry, something went wrong</h4>
-        <p>
-          Unfortunately, an error occurred and we were unable to process your
-          request.
-        </p>
-        <p>Please check that you have filled out all form fields correctly.</p>
-        <p>
-          <strong>
-            Alternatively, call 0207 493 9529 to complete your enquiry
-          </strong>
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+    <div className="failure-modal">
+      <Modal show onHide={onHide} bsSize="large">
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Unfortunately, an error occurred and we were unable to process your
+            request.
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Please check that you have filled out all form fields correctly.
+          </p>
+          <p>
+            <strong>
+              Alternatively, call <a href="tel:+442074939529">0207 493 9529</a>{' '}
+              to complete your enquiry
+            </strong>
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
   );
 };

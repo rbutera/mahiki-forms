@@ -24,6 +24,7 @@ stories.add('Events', () => <EventFormContainer />);
 stories.add('Book a Table', () => <TableFormContainer />);
 stories.add('SuccessModal', () => (
   <SuccessModal
+    show
     onHide={() => {
       alert('hide');
     }}
@@ -31,6 +32,7 @@ stories.add('SuccessModal', () => (
 ));
 stories.add('FailureModal', () => (
   <FailureModal
+    show
     onHide={() => {
       alert('hide');
     }}

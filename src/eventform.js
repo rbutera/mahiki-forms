@@ -285,7 +285,7 @@ export const EventForm = reduxForm({
 export class EventFormContainer extends Component {
   constructor(props) {
     super(props);
-    const { success = 0, failure = 0 } = props;
+    const { success = false, failure = false } = props;
     this.state = {
       sent: success,
       failed: failure
@@ -293,26 +293,28 @@ export class EventFormContainer extends Component {
   }
 
   showSuccess = () => {
-    this.setState({ sent: 1, failed: 0 });
+    this.setState({ sent: true, failed: false });
   };
 
   hideSuccess = () => {
-    this.setState({ sent: 0, failed: 0 });
+    this.setState({ sent: false, failed: false });
   };
 
   showFailure = () => {
-    this.setState({ sent: 0, failed: 1 });
+    this.setState({ sent: false, failed: true });
   };
 
   hideFailure = () => {
-    this.setState({ sent: 0, failed: 0 });
+    this.setState({ sent: false, failed: false });
   };
 
   render() {
     const { sent, failed } = this.state;
+    const { hideSuccess, hideFailure } = this;
     return (
       <div>
-        {sent ? <SuccessModal onHide={this.hideSuccess} /> : ''}
+        {sent && <SuccessModal show={sent} onHide={hideSuccess} />}
+        {failed && <FailureModal show={failed} onHide={hideFailure} />}
 
         <div className="container">
           <EventForm
@@ -320,7 +322,6 @@ export class EventFormContainer extends Component {
             onSubmitSuccess={this.showSuccess}
             onSubmitFail={this.showFailure}
           />
-          {failed ? <p className="error">Send Failed</p> : ''}
         </div>
       </div>
     );
