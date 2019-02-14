@@ -24,6 +24,7 @@ function TablePage() {
     </div>
   );
 }
-
-render(EventPage, document.getElementById('mahiki-event-form-root'));
-render(TablePage, document.getElementById('mahiki-table-form-root'));
+const event = document.getElementById('mahiki-event-form-root');
+event ? render(EventPage, event) : false;
+const table = document.getElementById('mahiki-table-form-root');
+table ? render(TablePage, table) : false;
