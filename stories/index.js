@@ -7,7 +7,7 @@ import store from '../src/configureStore';
 import { EventFormContainer } from '../src/eventform';
 import { TableFormContainer } from '../src/tableform';
 import { SuccessModal, FailureModal } from '../src/popup';
-
+import index from '../src/';
 const withReduxSettings = {
   Provider,
   store,

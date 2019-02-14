@@ -23,7 +23,8 @@ module.exports = (baseConfig, env, defaultConfig) => {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      jquery: 'jquery'
+      jquery: 'jquery',
+      emailjs: 'emailjs-com'
     })
   );
 
