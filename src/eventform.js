@@ -149,7 +149,7 @@ let eventForm = props => {
   };
   return (
     <div className="booking-form">
-      <h1>Event Enquiry</h1>
+      <h3>Enquire Today</h3>
       <form onSubmit={handleSubmit}>
         <Field
           name="name"

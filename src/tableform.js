@@ -132,7 +132,6 @@ let tableForm = props => {
   };
   return (
     <div className="booking-form">
-      <h1>Book a Table</h1>
       <form onSubmit={handleSubmit}>
         <Field
           name="name"
