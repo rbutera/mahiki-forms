@@ -19,7 +19,7 @@ function TablePage() {
   return (
     <div className="book-a-table-page">
       <ProviderWrapper store={store}>
-        <EventFormContainer />
+        <TableFormContainer />
       </ProviderWrapper>
     </div>
   );

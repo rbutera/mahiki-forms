@@ -1,14 +1,14 @@
 import React from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import { values, map } from 'rambda';
+import { values, map, take } from 'rambda';
 export const SuccessModal = props => {
   const { show, onHide } = props;
   return (
     <div className="success-modal">
       <Modal show onHide={onHide} bsSize="large">
         <Modal.Header closeButton>
-          <Modal.Title>See you soon!</Modal.Title>
+          <Modal.Title>Thank You</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h5>
@@ -22,7 +22,7 @@ export const SuccessModal = props => {
             Please call <a href="tel:+442074939529">0207 493 9529</a> if you
             require additional information or for same-day reservations.
           </p>
-          <p>Thank you for your enquiry.</p>
+          <p>We hope to see you soon!</p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={onHide}>Close</Button>
@@ -34,15 +34,17 @@ export const SuccessModal = props => {
 
 export const FailureModal = props => {
   const { show, onHide, errors } = props;
-  const renderErrors = err => map(error => <li>{error}</li>)(values(err));
+  const renderErrors = err =>
+    map(error => (
+      <li>
+        <p>{error}</p>
+      </li>
+    ))(take(3, values(err)));
   return (
     <div className="failure-modal">
       <Modal show onHide={onHide} bsSize="large">
         <Modal.Header closeButton>
-          <Modal.Title>
-            Unfortunately, an error occurred and we were unable to process your
-            request.
-          </Modal.Title>
+          <Modal.Title>Error</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {errors && <ul>{renderErrors(errors)}</ul>}

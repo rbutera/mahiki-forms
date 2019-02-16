@@ -33,7 +33,8 @@ stories.add('SuccessModal', () => (
 const errors = {
   age: 'Please provide your age.',
   foo: 'Please provide your name.',
-  counterstrike: 'Global Offensive'
+  counterstrike: 'Global Offensive',
+  four: 'four'
 };
 stories.add('FailureModal', () => (
   <FailureModal
