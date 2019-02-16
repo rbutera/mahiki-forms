@@ -11,9 +11,9 @@ export const SuccessModal = props => {
           <Modal.Title>Thank You</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h5>
+          <p class="form-popup-text">
             Your enquiry has been <strong>sent successfully.</strong>
-          </h5>
+          </p>
           <p class="form-popup-text">
             An email has been sent to your provided email address and has been
             forwarded to our reservations team who will be in touch shortly.
