@@ -11,18 +11,18 @@ export const SuccessModal = props => {
           <Modal.Title>Thank You</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p class="form-popup-text">
+          <p className="form-popup-text">
             Your enquiry has been <strong>sent successfully.</strong>
           </p>
-          <p class="form-popup-text">
+          <p className="form-popup-text">
             An email has been sent to your provided email address and has been
             forwarded to our reservations team who will be in touch shortly.
           </p>
-          <p class="form-popup-text">
+          <p className="form-popup-text">
             Please call <a href="tel:+442074939529">0207 493 9529</a> if you
             require additional information or for same-day reservations.
           </p>
-          <p class="form-popup-text">We hope to see you soon!</p>
+          <p className="form-popup-text">We hope to see you soon!</p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={onHide}>Close</Button>
@@ -37,7 +37,7 @@ export const FailureModal = props => {
   const renderErrors = err =>
     map(error => (
       <li>
-        <p class="form-popup-text">{error}</p>
+        <p className="form-popup-text">{error}</p>
       </li>
     ))(take(3, values(err)));
   return (
@@ -48,10 +48,10 @@ export const FailureModal = props => {
         </Modal.Header>
         <Modal.Body>
           {errors && <ul>{renderErrors(errors)}</ul>}
-          <p class="form-popup-text">
+          <p className="form-popup-text">
             Please check that you have filled out all form fields correctly.
           </p>
-          <p class="form-popup-text">
+          <p className="form-popup-text">
             <strong>
               Alternatively, call <a href="tel:+442074939529">0207 493 9529</a>{' '}
               to complete your enquiry
