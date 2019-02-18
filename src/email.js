@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { format } from 'date-fns';
 import { split, mapObjIndexed } from 'rambda';
 const emailjs = require('emailjs-com');
-emailjs.init('user_U9JKz3B38gTl28xlL9SXG');
+emailjs.init('user_7XLW7TColc8a79ci8D2Xu');
 
 const PRETTY_DATE_FORMAT = 'dddd Do MMMM YYYY';
 const SHORT_DATE_FORMAT = 'DD-MM-YYYY (ddd)';
