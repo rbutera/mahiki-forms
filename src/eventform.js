@@ -268,6 +268,7 @@ let eventForm = props => {
           <Field
             name="additional"
             component="textarea"
+            rows="4"
             className="form-control"
             id="book-event-additional"
             placeholder="Additional requests and comments to add to your booking enquiry (optional)"
