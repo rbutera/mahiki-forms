@@ -1,17 +1,20 @@
 import { SubmissionError } from 'redux-form';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+import { sendTableEmail } from '../email';
 
 function submit(values) {
-  return sleep(1000).then(() => {
-    // simulate server latency
-    if (values.name == 'error') {
-      throw new SubmissionError({
-        name: 'Test Error',
-        _error: 'This is a test'
-      });
+  return sendTableEmail(values).then(
+    success => {
+      console.log(
+        'table form submitted successfully. email sent. (FIXED)',
+        success
+      );
+      return success;
+    },
+    error => {
+      throw new SubmissionError({ status: error });
     }
-  });
+  );
 }
 
 export default submit;
