@@ -198,6 +198,7 @@ let tableForm = props => {
             name="additional"
             component="textarea"
             className="form-control"
+            rows="4"
             id="book-table-additional"
             placeholder="Additional requests and comments to add to your booking enquiry (optional)"
           />
