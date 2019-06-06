@@ -19,9 +19,7 @@ export function validateEmail(input: string = ''): boolean {
 
 export function validatePhoneNumber(input: string = ''): boolean {
   // from https://stackoverflow.com/questions/11518035/regular-expression-for-gb-based-and-only-numeric-phone-number
-  const phoneRx = /^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|\#)\d{3,4})?$/;
-
-  return phoneRx.test(input);
+  return !!input && !!input.length && input.length >= 8 && input.length <= 20;
 }
 
 export function validateNumPeople(input: number): boolean {
